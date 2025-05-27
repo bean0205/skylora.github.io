@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Skylora.vn - Nền tảng du lịch toàn diện</title>
+    <title>Skylora.vn - Nền tảng du lịch toàn diện</title>
     <meta name="description" content="Skylora.vn - Nền tảng du lịch chuyên nghiệp cung cấp thông tin toàn diện về điểm đến, ẩm thực và dịch vụ du lịch.">
     <link rel="icon" href="https://skylora.vn/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e40af;
-            --secondary-teal: #0891b2;
-            --accent-orange: #ea580c;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
+            --primary: #1e6091;
+            --primary-dark: #0a4a7c;
+            --secondary: #02A9EA;
+            --accent: #FF7D00;
+            --accent-light: #FFA64D;
+            --dark: #1A2C42;
+            --text: #243E63;
+            --text-light: #718096;
+            --gray-100: #f7fafc;
+            --gray-200: #edf2f7;
+            --gray-300: #e2e8f0;
+            --gray-400: #cbd5e0;
+            --gray-500: #a0aec0;
             --white: #ffffff;
-            --success: #059669;
-            --warning: #d97706;
+            --success: #38B2AC;
+            --error: #E53E3E;
+            --warning: #DD6B20;
         }
 
         * {
@@ -33,13 +37,14 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--gray-800);
-            background: var(--white);
+            color: var(--text);
+            background-color: var(--white);
         }
 
         /* Language Switcher */
@@ -50,10 +55,10 @@
             z-index: 1003;
             display: flex;
             background: var(--white);
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--gray-200);
         }
 
         .lang-btn {
@@ -63,7 +68,7 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
-            color: var(--gray-600);
+            color: var(--text-light);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -71,13 +76,13 @@
         }
 
         .lang-btn.active {
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
         }
 
         .lang-btn:hover:not(.active) {
-            background: var(--gray-50);
-            color: var(--primary-blue);
+            background: var(--gray-100);
+            color: var(--primary);
         }
 
         .flag-icon {
@@ -98,7 +103,7 @@
                 repeating-linear-gradient(90deg, #c8102e, #c8102e 13px, transparent 13px, transparent 26px);
         }
 
-        /* Development Status Banner */
+        /* Development Banner */
         .dev-banner {
             background: linear-gradient(135deg, var(--warning), #f59e0b);
             color: white;
@@ -120,19 +125,19 @@
             top: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 30px;
-            height: 70px;
+            height: 80px;
         }
 
         .logo {
@@ -140,44 +145,55 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: var(--primary-blue);
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--primary-blue);
+            width: 42px;
+            height: 42px;
+            background: var(--primary);
             color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 700;
-            color: var(--gray-800);
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 32px;
+            gap: 40px;
         }
 
         .nav-menu a {
-            color: var(--gray-700);
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 15px;
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .nav-menu a:hover {
-            color: var(--primary-blue);
+            color: var(--primary);
         }
 
         .nav-menu a::after {
@@ -187,7 +203,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-blue);
+            background: var(--primary);
             transition: width 0.3s ease;
         }
 
@@ -195,163 +211,108 @@
             width: 100%;
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 80px 30px;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .hero-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Development Status Card */
-        .dev-status {
-            background: var(--white);
-            border: 2px solid #fbbf24;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 50px;
-            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.1);
             position: relative;
+            background: linear-gradient(to bottom, rgba(30, 96, 145, 0.02) 0%, rgba(30, 96, 145, 0.05) 100%);
+            padding: 120px 30px 80px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--gray-200);
         }
 
-        .dev-status::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #fbbf24, #f59e0b);
-            border-radius: 12px 12px 0 0;
-        }
-
-        .status-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .status-icon {
-            width: 48px;
-            height: 48px;
-            background: #fef3c7;
-            color: #d97706;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .status-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--gray-800);
-        }
-
-        .status-description {
-            color: var(--gray-600);
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .status-timeline {
-            background: var(--gray-50);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .progress-section {
-            margin-top: 20px;
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .progress-bar {
             width: 100%;
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
-            width: 85%;
-            border-radius: 4px;
-            transition: width 1.5s ease-out;
-            animation: progressSlide 2s ease-out;
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 60px;
         }
 
         .hero-content {
-            margin-top: 40px;
+            flex: 1;
+            max-width: 650px;
         }
 
         .hero-title {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw + 1rem, 3.5rem);
             font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 20px;
+            color: var(--dark);
+            margin-bottom: 24px;
             line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--accent-light);
+            opacity: 0.3;
+            z-index: -1;
         }
 
         .hero-subtitle {
             font-size: 20px;
-            color: var(--gray-600);
+            color: var(--text);
             margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
         }
 
         .hero-description {
             font-size: 16px;
-            color: var(--gray-600);
+            color: var(--text-light);
             line-height: 1.7;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            margin-bottom: 40px;
         }
 
         .cta-buttons {
             display: flex;
             gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -359,38 +320,83 @@
         }
 
         .btn-primary {
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
-            border: 2px solid var(--primary-blue);
+            border: none;
         }
 
         .btn-primary:hover {
-            background: var(--primary-navy);
-            border-color: var(--primary-navy);
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(30, 96, 145, 0.3);
         }
 
         .btn-outline {
             background: transparent;
-            color: var(--gray-700);
-            border: 2px solid #e2e8f0;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn-outline:hover {
-            background: var(--gray-50);
-            border-color: var(--gray-300);
+            background: var(--primary);
+            color: white;
             transform: translateY(-2px);
         }
 
-        /* Features Section */
-        .features-section {
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-img-container {
+            width: 100%;
+            height: 450px;
+            background: var(--primary);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(41, 50, 65, 0.12);
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            max-width: 200px;
+        }
+
+        .floating-card-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .floating-card-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Development Process Section */
+        .dev-process-section {
             padding: 100px 30px;
             background: var(--white);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
@@ -400,123 +406,556 @@
         }
 
         .section-title {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3vw, 2.5rem);
             font-weight: 700;
-            color: var(--gray-900);
+            color: var(--dark);
             margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
 
         .section-subtitle {
             font-size: 18px;
-            color: var(--gray-600);
+            color: var(--text-light);
             max-width: 600px;
-            margin: 0 auto;
+            margin: 24px auto 0;
             line-height: 1.7;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: var(--gray-300);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 80px;
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 30px;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 14px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary);
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-progress {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+            top: 40px;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-icon {
+            background: var(--gray-100);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .timeline-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .timeline-highlights {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--gray-300);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .highlight-item i {
+            color: var(--success);
+            font-size: 14px;
+        }
+
+        .highlight-item span {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .progress-status {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .progress-label span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .progress-label .percentage {
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 85%;
+            border-radius: 4px;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 30px;
+            background: linear-gradient(to bottom, rgba(247, 250, 252, 0.8), rgba(237, 242, 247, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1935&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.04;
+            z-index: 0;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .feature-card {
             background: var(--white);
             padding: 40px 30px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 12px;
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 24px;
+            font-size: 26px;
+            margin-bottom: 24px;
+            background: var(--gray-100);
+            color: var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(30, 96, 145, 0.2);
         }
 
         .feature-title {
             font-size: 20px;
             font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 12px;
+            color: var(--dark);
+            margin-bottom: 16px;
         }
 
         .feature-description {
-            color: var(--gray-600);
-            line-height: 1.6;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 15px;
         }
 
         /* About Section */
         .about-section {
-            padding: 100px 30px;
-            background: var(--gray-50);
+            padding: 120px 30px;
+            background: var(--white);
         }
 
-        .about-grid {
+        .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
 
-        .about-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 44, 66, 0.8), rgba(26, 44, 66, 0.3));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+        }
+
+        .about-overlay h3 {
+            color: white;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--gray-900);
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-overlay p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--dark);
             margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
 
         .about-content p {
-            color: var(--gray-600);
+            color: var(--text-light);
             line-height: 1.7;
             margin-bottom: 20px;
+            font-size: 16px;
         }
 
-        .about-image {
-            background: var(--primary-blue);
+        .about-values {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .value-content h4 {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .value-content p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 30px;
+            background: var(--gray-100);
+        }
+
+        .testimonials-slider {
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            line-height: 0;
+            color: var(--gray-200);
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            opacity: 0.5;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--primary);
             color: white;
-            padding: 60px 40px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .about-image i {
-            font-size: 64px;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .about-image h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
             font-size: 24px;
-            margin-bottom: 16px;
         }
 
-        .about-image p {
-            opacity: 0.9;
-            line-height: 1.6;
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            font-size: 14px;
+            margin-top: 8px;
         }
 
         /* Stats Section */
         .stats-section {
             padding: 80px 30px;
-            background: var(--gray-900);
+            background: linear-gradient(120deg, var(--dark) 0%, var(--primary-dark) 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            top: -150px;
+            right: -100px;
+        }
+
+        .stats-section::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            bottom: -100px;
+            left: -50px;
         }
 
         .stats-grid {
@@ -524,6 +963,8 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-item {
@@ -534,12 +975,27 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #60a5fa;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 3px;
+            background: var(--accent);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
         }
 
         .stat-label {
             font-size: 16px;
-            color: #cbd5e1;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 16px;
         }
 
         /* Contact Section */
@@ -548,158 +1004,584 @@
             background: var(--white);
         }
 
-        .contact-content {
-            max-width: 600px;
+        .contact-container {
+            max-width: 700px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .contact-card {
-            background: var(--gray-50);
-            padding: 50px 40px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-top: 40px;
+            background: var(--gray-100);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.05;
+            top: -100px;
+            right: -100px;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.05;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed var(--primary);
+            animation: rotate 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1.2) rotate(360deg);
+            }
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-description {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 16px;
         }
 
         .contact-email {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
             padding: 16px 32px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin-top: 24px;
+            font-size: 16px;
         }
 
         .contact-email:hover {
-            background: var(--primary-navy);
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(30, 96, 145, 0.3);
+        }
+
+        .contact-response {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            margin-top: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-300);
+            font-size: 14px;
+            color: var(--text);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 96, 145, 0.1);
+        }
+
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--primary-dark);
         }
 
         /* Footer */
         .footer {
-            background: var(--gray-900);
+            background: var(--dark);
             color: white;
-            padding: 60px 30px 40px;
-            text-align: center;
+            padding: 80px 30px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .footer-logo .logo-icon {
-            background: var(--primary-blue);
+            background: var(--primary);
         }
 
         .footer-logo .logo-text {
             color: white;
-            font-size: 24px;
         }
 
-        .footer-text {
-            color: #cbd5e1;
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 24px;
         }
 
-        .footer-divider {
-            width: 60px;
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 24px;
+            font-size: 18px;
+            color: white;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
             height: 2px;
-            background: var(--primary-blue);
-            margin: 30px auto;
+            background: var(--accent);
         }
 
-        /* Animations */
-        @keyframes progressSlide {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 85%;
-            }
+        .footer-links {
+            list-style: none;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+        }
+
+        .floating-1 {
+            top: 10%;
+            left: 5%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .floating-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
                 transform: translateY(0);
             }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .language-switcher {
-                top: 15px;
-                right: 15px;
-                scale: 0.9;
-            }
-
-            .nav-container {
-                padding: 0 20px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .hero {
-                padding: 60px 20px;
-            }
-
-            .dev-status {
-                padding: 25px 20px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-section,
-            .about-section,
-            .contact-section {
-                padding: 80px 20px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-
-            .contact-card {
-                padding: 40px 25px;
+            50% {
+                transform: translateY(-30px);
             }
         }
 
-        /* Scroll animations */
+        /* Animation classes */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
 
-        .fade-in.visible {
+        .fade-in.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease;
+        }
+
+        .scale-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-flex {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+
+            .timeline-marker, .timeline-progress {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                left: 60px !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title span::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .hero-img-container {
+                height: 300px;
+            }
+
+            .floating-card {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -40px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .dev-process-section, 
+            .features-section, 
+            .about-section, 
+            .testimonials-section, 
+            .contact-section {
+                padding: 80px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-values {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .contact-card {
+                padding: 40px 25px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .timeline-title {
+                font-size: 18px;
+            }
+            
+            .timeline-content {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 20px 40px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .mobile-nav li {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Language transition effect */
@@ -737,66 +1619,279 @@
             </a>
             <ul class="nav-menu">
                 <li><a href="#home" data-key="nav-home">Trang chủ</a></li>
+                <li><a href="#development" data-key="nav-process">Quá trình</a></li>
                 <li><a href="#features" data-key="nav-services">Dịch vụ</a></li>
                 <li><a href="#about" data-key="nav-about">Giới thiệu</a></li>
                 <li><a href="#contact" data-key="nav-contact">Liên hệ</a></li>
             </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav">
+            <li><a href="#home" data-key="nav-home">Trang chủ</a></li>
+            <li><a href="#development" data-key="nav-process">Quá trình</a></li>
+            <li><a href="#features" data-key="nav-services">Dịch vụ</a></li>
+            <li><a href="#about" data-key="nav-about">Giới thiệu</a></li>
+            <li><a href="#contact" data-key="nav-contact">Liên hệ</a></li>
+        </ul>
+    </div>
+    <div class="menu-overlay"></div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
         <div class="hero-container">
-            <!-- Development Status -->
-            <div class="dev-status">
-                <div class="status-header">
-                    <div class="status-icon">
-                        <i class="fas fa-tools"></i>
+            <div class="hero-flex">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Khám phá <span>điểm đến</span> tuyệt vời cùng Skylora</h1>
+                    <p class="hero-subtitle" data-key="hero-subtitle">
+                        Nền tảng thông tin du lịch toàn diện
+                    </p>
+                    <p class="hero-description" data-key="hero-description">
+                        Khám phá những điểm đến tuyệt vời, trải nghiệm ẩm thực đặc sắc và
+                        tìm hiểu về văn hóa địa phương thông qua nền tảng thông tin du lịch
+                        chuyên nghiệp và đáng tin cậy.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#features" class="btn btn-primary">
+                            <i class="fas fa-compass"></i>
+                            <span data-key="cta-learn">Tìm hiểu thêm</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            <span data-key="cta-contact">Liên hệ</span>
+                        </a>
                     </div>
-                    <h2 class="status-title" data-key="status-title">Đang phát triển</h2>
                 </div>
-                <p class="status-description" data-key="status-description">
-                    Chúng tôi đang xây dựng một nền tảng du lịch toàn diện, cung cấp thông tin chi tiết 
-                    về điểm đến, ẩm thực và dịch vụ du lịch chất lượng cao.
-                </p>
-                
-                <div class="status-timeline">
-                    <div class="timeline-item">
-                        <i class="fas fa-calendar" style="color: var(--success);"></i>
-                        <span data-key="launch-date">Thời gian ra mắt dự kiến: Tháng 12, 2026</span>
+                <div class="hero-image scale-in">
+                    <div class="hero-img-container">
+                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Du lịch Việt Nam">
                     </div>
-                </div>
-
-                <div class="progress-section">
-                    <div class="progress-label">
-                        <span data-key="progress-label">Tiến độ phát triển</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                    <div class="floating-card">
+                        <h4 class="floating-card-title" data-key="floating-card-title">Sớm ra mắt!</h4>
+                        <p class="floating-card-text" data-key="floating-card-text">Skylora.vn - Nền tảng du lịch toàn diện</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-content">
-                <h1 class="hero-title">Skylora.vn</h1>
-                <p class="hero-subtitle" data-key="hero-subtitle">Nền tảng thông tin du lịch toàn diện</p>
-                <p class="hero-description" data-key="hero-description">
-                    Khám phá những điểm đến tuyệt vời, trải nghiệm ẩm thực đặc sắc và 
-                    tìm hiểu về văn hóa địa phương thông qua nền tảng thông tin du lịch 
-                    chuyên nghiệp và đáng tin cậy.
+    <!-- Development Process Section -->
+    <section id="development" class="dev-process-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-key="process-title">Quá trình phát triển</h2>
+                <p class="section-subtitle" data-key="process-subtitle">
+                    Chúng tôi tuân thủ quy trình phát triển chặt chẽ để đảm bảo 
+                    chất lượng cao nhất cho nền tảng Skylora
                 </p>
-                
-                <div class="cta-buttons">
-                    <a href="#features" class="btn btn-primary">
-                        <i class="fas fa-compass"></i>
-                        <span data-key="cta-learn">Tìm hiểu thêm</span>
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-envelope"></i>
-                        <span data-key="cta-contact">Liên hệ</span>
-                    </a>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-key="phase1-date">Tháng 1-3, 2026</span>
+                        <div class="timeline-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="timeline-title" data-key="phase1-title">Giai đoạn Nghiên cứu & Lập kế hoạch</h3>
+                        <p class="timeline-description" data-key="phase1-desc">
+                            Nghiên cứu thị trường, phân tích đối thủ cạnh tranh và xác định nhu cầu 
+                            của người dùng. Xây dựng kế hoạch chi tiết cho toàn bộ dự án.
+                        </p>
+                        <div class="timeline-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase1-highlight1">Nghiên cứu thị trường du lịch Việt Nam</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase1-highlight2">Khảo sát nhu cầu người dùng</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase1-highlight3">Phân tích đối thủ cạnh tranh</span>
+                            </div>
+                        </div>
+                        <div class="progress-status">
+                            <div class="progress-label">
+                                <span data-key="progress-label">Hoàn thành</span>
+                                <span class="percentage">100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-progress">1</div>
                 </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-key="phase2-date">Tháng 4-6, 2026</span>
+                        <div class="timeline-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h3 class="timeline-title" data-key="phase2-title">Giai đoạn Thiết kế & Prototype</h3>
+                        <p class="timeline-description" data-key="phase2-desc">
+                            Thiết kế trải nghiệm người dùng (UX) và giao diện người dùng (UI).
+                            Xây dựng các prototype để kiểm thử và cải tiến thiết kế.
+                        </p>
+                        <div class="timeline-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase2-highlight1">Thiết kế Wireframe</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase2-highlight2">Thiết kế UI/UX</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase2-highlight3">Phát triển prototype</span>
+                            </div>
+                        </div>
+                        <div class="progress-status">
+                            <div class="progress-label">
+                                <span data-key="progress-label">Hoàn thành</span>
+                                <span class="percentage">100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-progress">2</div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-key="phase3-date">Tháng 7-9, 2026</span>
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="timeline-title" data-key="phase3-title">Giai đoạn Phát triển</h3>
+                        <p class="timeline-description" data-key="phase3-desc">
+                            Lập trình front-end và back-end theo thiết kế đã được phê duyệt.
+                            Xây dựng cơ sở dữ liệu và API cho nền tảng.
+                        </p>
+                        <div class="timeline-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase3-highlight1">Phát triển front-end</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-key="phase3-highlight2">Phát triển back-end & API</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span data-key="phase3-highlight3">Tích hợp dịch vụ bên thứ ba</span>
+                            </div>
+                        </div>
+                        <div class="progress-status">
+                            <div class="progress-label">
+                                <span data-key="progress-label">Hoàn thành</span>
+                                <span class="percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-progress">3</div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-key="phase4-date">Tháng 10-11, 2026</span>
+                        <div class="timeline-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3 class="timeline-title" data-key="phase4-title">Giai đoạn Kiểm thử & Tối ưu</h3>
+                        <p class="timeline-description" data-key="phase4-desc">
+                            Kiểm thử toàn diện các chức năng, bảo mật và hiệu suất của nền tảng.
+                            Tối ưu hóa trải nghiệm người dùng và khắc phục lỗi.
+                        </p>
+                        <div class="timeline-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-half"></i>
+                                <span data-key="phase4-highlight1">Kiểm thử chức năng</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-half"></i>
+                                <span data-key="phase4-highlight2">Kiểm thử bảo mật</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-half"></i>
+                                <span data-key="phase4-highlight3">Tối ưu hóa hiệu suất</span>
+                            </div>
+                        </div>
+                        <div class="progress-status">
+                            <div class="progress-label">
+                                <span data-key="progress-label">Hoàn thành</span>
+                                <span class="percentage">30%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-progress">4</div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-key="phase5-date">Tháng 12, 2026</span>
+                        <div class="timeline-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="timeline-title" data-key="phase5-title">Giai đoạn Ra mắt & Hỗ trợ</h3>
+                        <p class="timeline-description" data-key="phase5-desc">
+                            Ra mắt chính thức nền tảng và triển khai chiến lược marketing.
+                            Cung cấp hỗ trợ kỹ thuật và thu thập phản hồi từ người dùng.
+                        </p>
+                        <div class="timeline-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-start"></i>
+                                <span data-key="phase5-highlight1">Ra mắt phiên bản beta</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-start"></i>
+                                <span data-key="phase5-highlight2">Triển khai marketing</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-hourglass-start"></i>
+                                <span data-key="phase5-highlight3">Ra mắt chính thức</span>
+                            </div>
+                        </div>
+                        <div class="progress-status">
+                            <div class="progress-label">
+                                <span data-key="progress-label">Hoàn thành</span>
+                                <span class="percentage">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-progress">5</div>
+                </div>
+            </div
             </div>
         </div>
     </section>
@@ -863,7 +1958,17 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <div class="about-grid">
+            <div class="about-container">
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1596097155664-4f5c49562ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Về Skylora.vn">
+                    <div class="about-overlay">
+                        <h3 data-key="mission-title">Sứ mệnh</h3>
+                        <p data-key="mission-desc">
+                            Kết nối du khách với những trải nghiệm du lịch tuyệt vời 
+                            thông qua thông tin chính xác và đáng tin cậy.
+                        </p>
+                    </div>
+                </div>
                 <div class="about-content fade-in">
                     <h2 data-key="about-title">Về Skylora.vn</h2>
                     <p data-key="about-desc1">
@@ -875,14 +1980,45 @@
                         Chúng tôi cam kết mang đến trải nghiệm người dùng chất lượng cao thông qua 
                         giao diện thân thiện, nội dung phong phú và dịch vụ hỗ trợ chuyên nghiệp.
                     </p>
-                </div>
-                <div class="about-image fade-in">
-                    <i class="fas fa-globe-asia"></i>
-                    <h3 data-key="mission-title">Sứ mệnh</h3>
-                    <p data-key="mission-desc">
-                        Kết nối du khách với những trải nghiệm du lịch tuyệt vời 
-                        thông qua thông tin chính xác và đáng tin cậy.
-                    </p>
+                    
+                    <div class="about-values">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 data-key="value1-title">Đáng tin cậy</h4>
+                                <p data-key="value1-desc">Thông tin chính xác, cập nhật thường xuyên</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 data-key="value2-title">Dễ sử dụng</h4>
+                                <p data-key="value2-desc">Giao diện thân thiện với người dùng</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 data-key="value3-title">Chất lượng</h4>
+                                <p data-key="value3-desc">Nội dung chất lượng cao, đầy đủ chi tiết</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 data-key="value4-title">Đam mê</h4>
+                                <p data-key="value4-desc">Đam mê khám phá và chia sẻ</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -915,26 +2051,42 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="contact-content">
-                <div class="section-header fade-in">
-                    <h2 class="section-title" data-key="contact-title">Liên hệ với chúng tôi</h2>
-                    <p class="section-subtitle" data-key="contact-subtitle">
-                        Chúng tôi luôn sẵn sàng lắng nghe ý kiến đóng góp và hỗ trợ 
-                        mọi thắc mắc của quý khách hàng.
-                    </p>
-                </div>
-                
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-key="contact-title">Liên hệ với chúng tôi</h2>
+                <p class="section-subtitle" data-key="contact-subtitle">
+                    Chúng tôi luôn sẵn sàng lắng nghe ý kiến đóng góp và hỗ trợ 
+                    mọi thắc mắc của quý khách hàng
+                </p>
+            </div>
+            
+            <div class="contact-container">
                 <div class="contact-card fade-in">
-                    <p style="margin-bottom: 20px; color: var(--gray-600);" data-key="contact-desc">
-                        Để được hỗ trợ hoặc đóng góp ý kiến, vui lòng liên hệ:
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title" data-key="contact-card-title">Liên hệ ngay</h3>
+                    <p class="contact-description" data-key="contact-desc">
+                        Để được hỗ trợ hoặc đóng góp ý kiến, vui lòng liên hệ với chúng tôi.
+                        Đội ngũ Skylora luôn sẵn sàng hỗ trợ bạn!
                     </p>
                     <a href="mailto:william@skylora.vn" class="contact-email">
                         <i class="fas fa-envelope"></i>
                         william@skylora.vn
                     </a>
-                    <p style="margin-top: 20px; font-size: 14px; color: var(--gray-600);" data-key="contact-response">
+                    <p class="contact-response" data-key="contact-response">
                         Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.
                     </p>
+                    
+                    <div class="newsletter">
+                        <h4 class="newsletter-title" data-key="newsletter-title">Đăng ký nhận thông báo</h4>
+                        <p class="newsletter-desc" data-key="newsletter-desc" style="font-size: 14px; margin-bottom: 15px; color: var(--text-light);">
+                            Nhận thông báo về ngày ra mắt và các tin tức mới nhất
+                        </p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Email của bạn" required>
+                            <button type="submit" class="newsletter-btn">Đăng ký</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -942,19 +2094,81 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <div class="logo-icon">S</div>
-                <span class="logo-text">Skylora</span>
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="logo-icon">S</div>
+                    <span class="logo-text">Skylora</span>
+                </div>
+                <p class="footer-description" data-key="footer-desc">
+                    Skylora.vn - Nền tảng thông tin du lịch toàn diện, cung cấp
+                    thông tin chính xác và đáng tin cậy về các điểm đến tuyệt vời
+                    tại Việt Nam và quốc tế.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
             
-            <div class="footer-divider"></div>
+            <div class="footer-column">
+                <h4 class="footer-title" data-key="footer-links">Liên kết nhanh</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" data-key="footer-home"><i class="fas fa-angle-right"></i> Trang chủ</a></li>
+                    <li><a href="#development" data-key="footer-process"><i class="fas fa-angle-right"></i> Quá trình phát triển</a></li>
+                    <li><a href="#features" data-key="footer-services"><i class="fas fa-angle-right"></i> Dịch vụ</a></li>
+                    <li><a href="#about" data-key="footer-about"><i class="fas fa-angle-right"></i> Giới thiệu</a></li>
+                    <li><a href="#contact" data-key="footer-contact"><i class="fas fa-angle-right"></i> Liên hệ</a></li>
+                </ul>
+            </div>
             
-            <div class="footer-text">
-                <p data-key="footer-copyright">© 2025 Skylora.vn - Nền tảng thông tin du lịch toàn diện</p>
-                <p style="margin-top: 10px; opacity: 0.7;" data-key="footer-location">
-                    Được phát triển tại Việt Nam
-                </p>
+            <div class="footer-column">
+                <h4 class="footer-title" data-key="footer-services">Dịch vụ</h4>
+                <ul class="footer-links">
+                    <li><a href="#" data-key="footer-destinations"><i class="fas fa-angle-right"></i> Thông tin điểm đến</a></li>
+                    <li><a href="#" data-key="footer-food"><i class="fas fa-angle-right"></i> Hướng dẫn ẩm thực</a></li>
+                    <li><a href="#" data-key="footer-planning"><i class="fas fa-angle-right"></i> Lập kế hoạch du lịch</a></li>
+                    <li><a href="#" data-key="footer-community"><i class="fas fa-angle-right"></i> Cộng đồng du lịch</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4 class="footer-title" data-key="footer-contact-title">Thông tin liên hệ</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>william@skylora.vn</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>(+84) 123-456-789</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-key="footer-address">Hà Nội, Việt Nam</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span data-key="footer-hours">Giờ làm việc: 8:00 - 17:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright" data-key="footer-copyright">
+                &copy; 2025 Skylora.vn - Nền tảng thông tin du lịch toàn diện. Đang phát triển. 
+                <br><span style="display: inline-block; margin-top: 8px; font-size: 12px; opacity: 0.8;">Thời gian hiện tại: 27/05/2025 - 08:11</span>
+            </p>
+            <div class="footer-bottom-links">
+                <a href="#" data-key="footer-terms">Điều khoản sử dụng</a>
+                <a href="#" data-key="footer-privacy">Chính sách bảo mật</a>
+                <a href="#" data-key="footer-faq">FAQ</a>
             </div>
         </div>
     </footer>
@@ -966,17 +2180,49 @@
                 'page-title': 'Skylora.vn - Nền tảng du lịch toàn diện',
                 'dev-banner': 'Website đang trong giai đoạn phát triển - Dự kiến ra mắt Tháng 12, 2026',
                 'nav-home': 'Trang chủ',
+                'nav-process': 'Quá trình',
                 'nav-services': 'Dịch vụ',
                 'nav-about': 'Giới thiệu',
                 'nav-contact': 'Liên hệ',
-                'status-title': 'Đang phát triển',
-                'status-description': 'Chúng tôi đang xây dựng một nền tảng du lịch toàn diện, cung cấp thông tin chi tiết về điểm đến, ẩm thực và dịch vụ du lịch chất lượng cao.',
-                'launch-date': 'Thời gian ra mắt dự kiến: Tháng 12, 2026',
-                'progress-label': 'Tiến độ phát triển',
                 'hero-subtitle': 'Nền tảng thông tin du lịch toàn diện',
                 'hero-description': 'Khám phá những điểm đến tuyệt vời, trải nghiệm ẩm thực đặc sắc và tìm hiểu về văn hóa địa phương thông qua nền tảng thông tin du lịch chuyên nghiệp và đáng tin cậy.',
+                'floating-card-title': 'Sớm ra mắt!',
+                'floating-card-text': 'Skylora.vn - Nền tảng du lịch toàn diện',
                 'cta-learn': 'Tìm hiểu thêm',
                 'cta-contact': 'Liên hệ',
+                'process-title': 'Quá trình phát triển',
+                'process-subtitle': 'Chúng tôi tuân thủ quy trình phát triển chặt chẽ để đảm bảo chất lượng cao nhất cho nền tảng Skylora',
+                'phase1-date': 'Tháng 1-3, 2026',
+                'phase1-title': 'Giai đoạn Nghiên cứu & Lập kế hoạch',
+                'phase1-desc': 'Nghiên cứu thị trường, phân tích đối thủ cạnh tranh và xác định nhu cầu của người dùng. Xây dựng kế hoạch chi tiết cho toàn bộ dự án.',
+                'phase1-highlight1': 'Nghiên cứu thị trường du lịch Việt Nam',
+                'phase1-highlight2': 'Khảo sát nhu cầu người dùng',
+                'phase1-highlight3': 'Phân tích đối thủ cạnh tranh',
+                'phase2-date': 'Tháng 4-6, 2026',
+                'phase2-title': 'Giai đoạn Thiết kế & Prototype',
+                'phase2-desc': 'Thiết kế trải nghiệm người dùng (UX) và giao diện người dùng (UI). Xây dựng các prototype để kiểm thử và cải tiến thiết kế.',
+                'phase2-highlight1': 'Thiết kế Wireframe',
+                'phase2-highlight2': 'Thiết kế UI/UX',
+                'phase2-highlight3': 'Phát triển prototype',
+                'phase3-date': 'Tháng 7-9, 2026',
+                'phase3-title': 'Giai đoạn Phát triển',
+                'phase3-desc': 'Lập trình front-end và back-end theo thiết kế đã được phê duyệt. Xây dựng cơ sở dữ liệu và API cho nền tảng.',
+                'phase3-highlight1': 'Phát triển front-end',
+                'phase3-highlight2': 'Phát triển back-end & API',
+                'phase3-highlight3': 'Tích hợp dịch vụ bên thứ ba',
+                'phase4-date': 'Tháng 10-11, 2026',
+                'phase4-title': 'Giai đoạn Kiểm thử & Tối ưu',
+                'phase4-desc': 'Kiểm thử toàn diện các chức năng, bảo mật và hiệu suất của nền tảng. Tối ưu hóa trải nghiệm người dùng và khắc phục lỗi.',
+                'phase4-highlight1': 'Kiểm thử chức năng',
+                'phase4-highlight2': 'Kiểm thử bảo mật',
+                'phase4-highlight3': 'Tối ưu hóa hiệu suất',
+                'phase5-date': 'Tháng 12, 2026',
+                'phase5-title': 'Giai đoạn Ra mắt & Hỗ trợ',
+                'phase5-desc': 'Ra mắt chính thức nền tảng và triển khai chiến lược marketing. Cung cấp hỗ trợ kỹ thuật và thu thập phản hồi từ người dùng.',
+                'phase5-highlight1': 'Ra mắt phiên bản beta',
+                'phase5-highlight2': 'Triển khai marketing',
+                'phase5-highlight3': 'Ra mắt chính thức',
+                'progress-label': 'Hoàn thành',
                 'features-title': 'Dịch vụ của chúng tôi',
                 'features-subtitle': 'Skylora.vn sẽ cung cấp thông tin toàn diện và đáng tin cậy để hỗ trợ mọi nhu cầu du lịch của bạn',
                 'feature1-title': 'Thông tin điểm đến',
@@ -992,32 +2238,91 @@
                 'about-desc2': 'Chúng tôi cam kết mang đến trải nghiệm người dùng chất lượng cao thông qua giao diện thân thiện, nội dung phong phú và dịch vụ hỗ trợ chuyên nghiệp.',
                 'mission-title': 'Sứ mệnh',
                 'mission-desc': 'Kết nối du khách với những trải nghiệm du lịch tuyệt vời thông qua thông tin chính xác và đáng tin cậy.',
+                'value1-title': 'Đáng tin cậy',
+                'value1-desc': 'Thông tin chính xác, cập nhật thường xuyên',
+                'value2-title': 'Dễ sử dụng',
+                'value2-desc': 'Giao diện thân thiện với người dùng',
+                'value3-title': 'Chất lượng',
+                'value3-desc': 'Nội dung chất lượng cao, đầy đủ chi tiết',
+                'value4-title': 'Đam mê',
+                'value4-desc': 'Đam mê khám phá và chia sẻ',
                 'stat1': 'Điểm đến được cập nhật',
                 'stat2': 'Thông tin ẩm thực',
                 'stat3': 'Hỗ trợ khách hàng',
                 'stat4': 'Thông tin đáng tin cậy',
                 'contact-title': 'Liên hệ với chúng tôi',
-                'contact-subtitle': 'Chúng tôi luôn sẵn sàng lắng nghe ý kiến đóng góp và hỗ trợ mọi thắc mắc của quý khách hàng.',
-                'contact-desc': 'Để được hỗ trợ hoặc đóng góp ý kiến, vui lòng liên hệ:',
+                'contact-subtitle': 'Chúng tôi luôn sẵn sàng lắng nghe ý kiến đóng góp và hỗ trợ mọi thắc mắc của quý khách hàng',
+                'contact-card-title': 'Liên hệ ngay',
+                'contact-desc': 'Để được hỗ trợ hoặc đóng góp ý kiến, vui lòng liên hệ với chúng tôi. Đội ngũ Skylora luôn sẵn sàng hỗ trợ bạn!',
                 'contact-response': 'Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.',
-                'footer-copyright': '© 2025 Skylora.vn - Nền tảng thông tin du lịch toàn diện',
-                'footer-location': 'Được phát triển tại Việt Nam'
+                'newsletter-title': 'Đăng ký nhận thông báo',
+                'newsletter-desc': 'Nhận thông báo về ngày ra mắt và các tin tức mới nhất',
+                'footer-desc': 'Skylora.vn - Nền tảng thông tin du lịch toàn diện, cung cấp thông tin chính xác và đáng tin cậy về các điểm đến tuyệt vời tại Việt Nam và quốc tế.',
+                'footer-links': 'Liên kết nhanh',
+                'footer-home': 'Trang chủ',
+                'footer-process': 'Quá trình phát triển',
+                'footer-services': 'Dịch vụ',
+                'footer-about': 'Giới thiệu',
+                'footer-contact': 'Liên hệ',
+                'footer-destinations': 'Thông tin điểm đến',
+                'footer-food': 'Hướng dẫn ẩm thực',
+                'footer-planning': 'Lập kế hoạch du lịch',
+                'footer-community': 'Cộng đồng du lịch',
+                'footer-contact-title': 'Thông tin liên hệ',
+                'footer-address': 'Hà Nội, Việt Nam',
+                'footer-hours': 'Giờ làm việc: 8:00 - 17:00',
+                'footer-copyright': '© 2025 Skylora.vn - Nền tảng thông tin du lịch toàn diện. Đang phát triển.',
+                'footer-terms': 'Điều khoản sử dụng',
+                'footer-privacy': 'Chính sách bảo mật',
+                'footer-faq': 'FAQ'
             },
             en: {
                 'page-title': 'Skylora.vn - Comprehensive Travel Platform',
                 'dev-banner': 'Website under development - Expected launch: December 2026',
                 'nav-home': 'Home',
+                'nav-process': 'Process',
                 'nav-services': 'Services',
                 'nav-about': 'About',
                 'nav-contact': 'Contact',
-                'status-title': 'Under Development',
-                'status-description': 'We are building a comprehensive travel platform that provides detailed information about destinations, cuisine, and high-quality travel services.',
-                'launch-date': 'Expected launch date: December 2026',
-                'progress-label': 'Development Progress',
                 'hero-subtitle': 'Comprehensive Travel Information Platform',
                 'hero-description': 'Discover amazing destinations, experience distinctive cuisine, and learn about local culture through our professional and reliable travel information platform.',
+                'floating-card-title': 'Coming Soon!',
+                'floating-card-text': 'Skylora.vn - Comprehensive Travel Platform',
                 'cta-learn': 'Learn More',
-                'cta-contact': 'Contact',
+                'cta-contact': 'Contact Us',
+                'process-title': 'Development Process',
+                'process-subtitle': 'We follow a stringent development process to ensure the highest quality for the Skylora platform',
+                'phase1-date': 'January-March, 2026',
+                'phase1-title': 'Research & Planning Phase',
+                'phase1-desc': 'Market research, competitor analysis, and user needs identification. Creating a detailed plan for the entire project.',
+                'phase1-highlight1': 'Vietnamese tourism market research',
+                'phase1-highlight2': 'User needs survey',
+                'phase1-highlight3': 'Competitor analysis',
+                'phase2-date': 'April-June, 2026',
+                'phase2-title': 'Design & Prototyping Phase',
+                'phase2-desc': 'User experience (UX) and user interface (UI) design. Building prototypes for testing and design improvement.',
+                'phase2-highlight1': 'Wireframe design',
+                'phase2-highlight2': 'UI/UX design',
+                'phase2-highlight3': 'Prototype development',
+                'phase3-date': 'July-September, 2026',
+                'phase3-title': 'Development Phase',
+                'phase3-desc': 'Front-end and back-end programming according to approved designs. Building the database and API for the platform.',
+                'phase3-highlight1': 'Front-end development',
+                'phase3-highlight2': 'Back-end & API development',
+                'phase3-highlight3': 'Third-party service integration',
+                'phase4-date': 'October-November, 2026',
+                'phase4-title': 'Testing & Optimization Phase',
+                'phase4-desc': 'Comprehensive testing of features, security, and performance. Optimizing user experience and fixing bugs.',
+                'phase4-highlight1': 'Functional testing',
+                'phase4-highlight2': 'Security testing',
+                'phase4-highlight3': 'Performance optimization',
+                'phase5-date': 'December, 2026',
+                'phase5-title': 'Launch & Support Phase',
+                'phase5-desc': 'Official platform launch and marketing strategy implementation. Providing technical support and collecting user feedback.',
+                'phase5-highlight1': 'Beta version launch',
+                'phase5-highlight2': 'Marketing deployment',
+                'phase5-highlight3': 'Official launch',
+                'progress-label': 'Completed',
                 'features-title': 'Our Services',
                 'features-subtitle': 'Skylora.vn will provide comprehensive and reliable information to support all your travel needs',
                 'feature1-title': 'Destination Information',
@@ -1031,18 +2336,45 @@
                 'about-title': 'About Skylora.vn',
                 'about-desc1': 'Skylora.vn is developed with the goal of becoming the leading travel information platform in Vietnam, providing accurate, reliable, and useful information for all travel needs.',
                 'about-desc2': 'We are committed to delivering high-quality user experiences through friendly interfaces, rich content, and professional support services.',
-                'mission-title': 'Mission',
+                'mission-title': 'Our Mission',
                 'mission-desc': 'Connecting travelers with amazing travel experiences through accurate and reliable information.',
+                'value1-title': 'Trustworthy',
+                'value1-desc': 'Accurate information, regularly updated',
+                'value2-title': 'User-friendly',
+                'value2-desc': 'Interface friendly to all users',
+                'value3-title': 'Quality',
+                'value3-desc': 'High quality content with complete details',
+                'value4-title': 'Passion',
+                'value4-desc': 'Passion for discovery and sharing',
                 'stat1': 'Updated destinations',
                 'stat2': 'Culinary information',
                 'stat3': 'Customer support',
                 'stat4': 'Reliable information',
                 'contact-title': 'Contact Us',
-                'contact-subtitle': 'We are always ready to listen to your feedback and support any questions you may have.',
-                'contact-desc': 'For support or feedback, please contact:',
+                'contact-subtitle': 'We are always ready to listen to your feedback and support any questions you may have',
+                'contact-card-title': 'Get in Touch',
+                'contact-desc': 'For support or feedback, please contact us. The Skylora team is always ready to help you!',
                 'contact-response': 'We will respond within 24 business hours.',
-                'footer-copyright': '© 2025 Skylora.vn - Comprehensive Travel Information Platform',
-                'footer-location': 'Developed in Vietnam'
+                'newsletter-title': 'Subscribe for Updates',
+                'newsletter-desc': 'Get notifications about launch date and latest news',
+                'footer-desc': 'Skylora.vn - Comprehensive travel information platform, providing accurate and reliable information about wonderful destinations in Vietnam and internationally.',
+                'footer-links': 'Quick Links',
+                'footer-home': 'Home',
+                'footer-process': 'Development Process',
+                'footer-services': 'Services',
+                'footer-about': 'About',
+                'footer-contact': 'Contact',
+                'footer-destinations': 'Destination Information',
+                'footer-food': 'Culinary Guide',
+                'footer-planning': 'Trip Planning',
+                'footer-community': 'Travel Community',
+                'footer-contact-title': 'Contact Information',
+                'footer-address': 'Hanoi, Vietnam',
+                'footer-hours': 'Working Hours: 8:00 - 17:00',
+                'footer-copyright': '© 2025 Skylora.vn - Comprehensive Travel Information Platform. Under development.',
+                'footer-terms': 'Terms of Use',
+                'footer-privacy': 'Privacy Policy',
+                'footer-faq': 'FAQ'
             }
         };
 
@@ -1052,13 +2384,11 @@
         function switchLanguage(lang) {
             if (lang === currentLang) return;
             
-            // Add transition effect
             document.body.classList.add('language-transition');
             
             setTimeout(() => {
                 currentLang = lang;
                 
-                // Update active button
                 document.querySelectorAll('.lang-btn').forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.dataset.lang === lang) {
@@ -1066,28 +2396,17 @@
                     }
                 });
                 
-                // Update all text elements
                 document.querySelectorAll('[data-key]').forEach(element => {
                     const key = element.dataset.key;
                     if (translations[lang][key]) {
-                        if (element.tagName === 'TITLE') {
-                            element.textContent = translations[lang][key];
-                        } else {
-                            element.textContent = translations[lang][key];
-                        }
+                        element.textContent = translations[lang][key];
                     }
                 });
                 
-                // Update page title
                 document.title = translations[lang]['page-title'];
-                
-                // Update HTML lang attribute
                 document.documentElement.lang = lang;
-                
-                // Store preference
                 localStorage.setItem('skylora-language', lang);
                 
-                // Remove transition effect
                 document.body.classList.remove('language-transition');
             }, 150);
         }
@@ -1099,12 +2418,47 @@
             });
         });
 
-        // Load saved language preference
-        window.addEventListener('load', function() {
-            const savedLang = localStorage.getItem('skylora-language');
-            if (savedLang && savedLang !== currentLang) {
-                switchLanguage(savedLang);
-            }
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+            observer.observe(el);
         });
 
         // Smooth scrolling
@@ -1121,53 +2475,30 @@
             });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Progress bar realistic updates
-        function updateProgress() {
-            const progressBar = document.querySelector('.progress-fill');
-            const progressText = document.querySelector('.progress-label span:last-child');
-            
-            setInterval(() => {
-                const currentWidth = parseInt(progressBar.style.width) || 85;
-                if (currentWidth < 92) {
-                    const newWidth = currentWidth + Math.random() * 0.1;
-                    progressBar.style.width = newWidth + '%';
-                    progressText.textContent = Math.round(newWidth) + '%';
-                }
-            }, 60000); // Update every minute
-        }
-
-        // Initialize
+        // Load saved language preference
         window.addEventListener('load', function() {
-            updateProgress();
+            const savedLang = localStorage.getItem('skylora-language');
+            if (savedLang && savedLang !== currentLang) {
+                switchLanguage(savedLang);
+            }
+
+            // Initialize animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 300);
         });
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
                 navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.height = '70px';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+                navbar.style.height = '80px';
             }
         });
     </script>
