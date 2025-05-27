@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylora.vn - Đang trong giai đoạn phát triển</title>
+    <meta name="description" content="Skylora.vn - Website cung cấp thông tin du lịch toàn diện cho từng quốc gia và địa phương.">
+    <link rel="icon" href="https://skylora.vn/favicon.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+        body {
+            background: linear-gradient(120deg, #00c6ff 0%, #0072ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        .container {
+            background: rgba(255,255,255,0.13);
+            padding: 44px 28px 32px 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+            max-width: 430px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            position: relative;
+            animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(48px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .logo {
+            width: 88px;
+            height: 88px;
+            margin-bottom: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.7rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.11);
+            position: relative;
+        }
+        .logo::after {
+            content: "✈️";
+            position: absolute;
+            bottom: 18px;
+            right: 10px;
+            font-size: 1.5rem;
+            animation: flyPlane 2.5s infinite cubic-bezier(0.47,1.64,0.41,0.8);
+        }
+        @keyframes flyPlane {
+            0% { transform: translateY(0) rotate(-5deg);}
+            50% { transform: translateY(-13px) rotate(10deg);}
+            100% { transform: translateY(0) rotate(-5deg);}
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.15rem;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 1.13rem;
+            margin-bottom: 20px;
+            color: #e0f7fa;
+        }
+        .dev-status {
+            background: rgba(0,0,0,0.17);
+            border-radius: 9px;
+            padding: 17px 10px 15px 10px;
+            margin-bottom: 17px;
+            font-size: 1.11rem;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dev-status .icon {
+            font-size: 2.3rem;
+            margin-bottom: 6px;
+            animation: bounce 1.8s infinite;
+        }
+        @keyframes bounce {
+            0%,100% { transform: translateY(0);}
+            50% { transform: translateY(-8px);}
+        }
+        .features {
+            text-align: left;
+            margin: 14px 0 8px 0;
+            color: #fff;
+        }
+        .features li {
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 26px;
+            font-size: 1rem;
+        }
+        .features li::before {
+            content: "🌟";
+            position: absolute;
+            left: 0;
+            font-size: 1.05rem;
+        }
+        .contact {
+            margin-top: 22px;
+            font-size: 0.97rem;
+            color: #b3e5fc;
+        }
+        .contact a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .coming-soon {
+            margin-top: 6px;
+            font-size: 1.08rem;
+            color: #ffd600;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity: 1;}
+            50% { opacity: 0.65;}
+        }
+        @media(max-width: 550px) {
+            .container { padding: 22px 5px 10px 5px; max-width: 97vw;}
+            h1 { font-size: 1.35rem; }
+            .logo { width: 52px; height: 52px; font-size: 1.15rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">SK</div>
+        <h1>Skylora.vn</h1>
+        <div class="subtitle">Khám phá thế giới du lịch, ẩm thực & sự kiện đa sắc màu!</div>
+        <div class="dev-status">
+            <div class="icon">🚧</div>
+            <div>
+                Skylora.vn đang được hoàn thiện để mang đến trải nghiệm tốt nhất cho bạn.
+                <span class="coming-soon">Sắp ra mắt!</span>
+            </div>
+        </div>
+        <ul class="features">
+            <li>Khám phá điểm đến nổi bật & bí ẩn tại từng địa phương</li>
+            <li>Gợi ý món ăn đặc sản và địa chỉ nhà hàng chất lượng</li>
+            <li>Đặt chỗ ở, tìm sự kiện hấp dẫn dễ dàng</li>
+            <li>Sổ tay mẹo du lịch & hành trình cá nhân hóa</li>
+            <li>Cộng đồng chia sẻ trải nghiệm thực tế</li>
+        </ul>
+        <div class="contact">
+            Có ý kiến hoặc muốn hợp tác? <br>
+            Gửi email cho Skylora tại <a href="mailto:william@skylora.vn">william@skylora.vn</a>
+        </div>
+    </div>
+</body>
+</html>
