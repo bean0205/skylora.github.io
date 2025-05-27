@@ -47,19 +47,27 @@
             background-color: var(--white);
         }
 
-        /* Language Switcher */
-        .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1003;
-            display: flex;
-            background: var(--white);
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            border: 1px solid var(--gray-200);
-        }
+     .language-switcher {
+    position: fixed;
+    top: 60px; /* Thay đổi từ 20px thành 60px để dịch xuống dưới banner */
+    right: 20px;
+    z-index: 1003;
+    display: flex;
+    background: var(--white);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+}
+
+/* Thêm responsive cho mobile */
+@media (max-width: 768px) {
+    .language-switcher {
+        top: 60px;
+        right: 15px;
+        scale: 0.9;
+    }
+}
 
         .lang-btn {
             padding: 8px 16px;
@@ -1593,16 +1601,16 @@
 </head>
 <body>
     <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" data-lang="vi">
-            <span class="flag-icon flag-vi"></span>
-            <span>VI</span>
-        </button>
-        <button class="lang-btn" data-lang="en">
-            <span class="flag-icon flag-en"></span>
-            <span>EN</span>
-        </button>
-    </div>
+   <div class="language-switcher">
+    <button class="lang-btn active" data-lang="vi">
+        <span class="flag-icon flag-vi"></span>
+        <span>VI</span>
+    </button>
+    <button class="lang-btn" data-lang="en">
+        <span class="flag-icon flag-en"></span>
+        <span>EN</span>
+    </button>
+</div>
 
     <!-- Development Banner -->
     <div class="dev-banner">
