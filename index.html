@@ -1450,13 +1450,54 @@
             }
         }
 
+        /* Tablet: 768px - 1024px - Collapsible permanent drawer */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                gap: 24px;
+            }
+            
+            .nav-menu a {
+                font-size: 14px;
+            }
+            
+            .mobile-menu {
+                width: min(350px, 90vw);
+            }
+        }
+
+        /* Mobile: < 768px - Temporary drawer with backdrop */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                background: transparent;
+                border: none;
+                font-size: 20px;
+                color: var(--text);
+                cursor: pointer;
+            }
+
+            .mobile-menu-btn:hover {
+                background: var(--gray-100);
+            }
+
+            .mobile-menu-btn:active {
+                transform: scale(0.95);
+                background: var(--gray-200);
             }
 
             .hero {
@@ -1529,14 +1570,18 @@
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 300px;
+            right: -100vw;
+            width: min(300px, 85vw);
             height: 100vh;
             background: white;
             z-index: 1001;
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 80px 20px 40px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            will-change: transform;
+            contain: layout style paint;
         }
 
         .mobile-menu.active {
@@ -1552,11 +1597,32 @@
             font-size: 20px;
             color: var(--text);
             cursor: pointer;
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .close-menu:hover {
+            background: var(--gray-100);
+        }
+
+        .close-menu:active {
+            transform: scale(0.95);
+            background: var(--gray-200);
+        }
+
+        .mobile-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .mobile-nav li {
-            list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
         }
 
         .mobile-nav a {
@@ -1564,14 +1630,44 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 16px;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 10px;
-            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-bottom: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .mobile-nav a:hover {
+        .mobile-nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a:focus {
             color: var(--primary);
+            background: var(--gray-100);
+            transform: translateX(4px);
+        }
+
+        .mobile-nav a:hover::before,
+        .mobile-nav a:focus::before {
+            transform: scaleY(1);
+        }
+
+        .mobile-nav a:active {
+            transform: translateX(2px) scale(0.98);
+            background: var(--gray-200);
         }
 
         .menu-overlay {
@@ -1580,11 +1676,13 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
 
         .menu-overlay.active {
@@ -1596,6 +1694,58 @@
         .language-transition {
             opacity: 0.7;
             transition: opacity 0.3s ease;
+        }
+
+        /* Performance optimizations and accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .mobile-menu,
+            .menu-overlay,
+            .mobile-nav a,
+            .close-menu,
+            .mobile-menu-btn {
+                transition: none;
+            }
+            
+            .mobile-nav a:hover,
+            .mobile-nav a:focus {
+                transform: none;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .mobile-menu {
+                border: 2px solid var(--text);
+            }
+            
+            .mobile-nav a {
+                border: 1px solid var(--gray-300);
+            }
+            
+            .menu-overlay {
+                background: rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* Focus management */
+        .mobile-menu-btn:focus,
+        .close-menu:focus,
+        .mobile-nav a:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Utility classes */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
@@ -1620,9 +1770,9 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#home" class="logo">
+            <a href="#home" class="logo" aria-label="Skylora homepage">
                 <div class="logo-icon">S</div>
                 <span class="logo-text">Skylora</span>
             </a>
@@ -1633,26 +1783,29 @@
                 <li><a href="#about" data-key="nav-about">Giới thiệu</a></li>
                 <li><a href="#contact" data-key="nav-contact">Liên hệ</a></li>
             </ul>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <button class="close-menu">
-            <i class="fas fa-times"></i>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title" aria-hidden="true">
+        <h2 id="mobile-menu-title" class="visually-hidden">Navigation Menu</h2>
+        <button class="close-menu" aria-label="Close mobile menu">
+            <i class="fas fa-times" aria-hidden="true"></i>
         </button>
-        <ul class="mobile-nav">
-            <li><a href="#home" data-key="nav-home">Trang chủ</a></li>
-            <li><a href="#development" data-key="nav-process">Quá trình</a></li>
-            <li><a href="#features" data-key="nav-services">Dịch vụ</a></li>
-            <li><a href="#about" data-key="nav-about">Giới thiệu</a></li>
-            <li><a href="#contact" data-key="nav-contact">Liên hệ</a></li>
-        </ul>
+        <nav role="navigation" aria-label="Mobile navigation">
+            <ul class="mobile-nav">
+                <li><a href="#home" data-key="nav-home">Trang chủ</a></li>
+                <li><a href="#development" data-key="nav-process">Quá trình</a></li>
+                <li><a href="#features" data-key="nav-services">Dịch vụ</a></li>
+                <li><a href="#about" data-key="nav-about">Giới thiệu</a></li>
+                <li><a href="#contact" data-key="nav-contact">Liên hệ</a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="menu-overlay"></div>
+    <div class="menu-overlay" aria-hidden="true"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -2406,27 +2559,156 @@
             });
         });
 
-        // Mobile menu functionality
+        // Enhanced Mobile menu functionality
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const closeMenuBtn = document.querySelector('.close-menu');
         const mobileMenu = document.querySelector('.mobile-menu');
         const menuOverlay = document.querySelector('.menu-overlay');
+        const body = document.body;
         
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+        let isMenuOpen = false;
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchCurrentX = 0;
+        let touchCurrentY = 0;
         
-        function closeMenu() {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+        // Haptic feedback support
+        function triggerHapticFeedback() {
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
         }
         
+        // Focus management
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+            
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        }
+        
+        function openMenu() {
+            if (isMenuOpen) return;
+            
+            isMenuOpen = true;
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            body.style.overflow = 'hidden';
+            
+            // Update ARIA attributes
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            menuOverlay.setAttribute('aria-hidden', 'false');
+            
+            // Focus management
+            setTimeout(() => {
+                closeMenuBtn.focus();
+                trapFocus(mobileMenu);
+            }, 100);
+            
+            triggerHapticFeedback();
+        }
+        
+        function closeMenu() {
+            if (!isMenuOpen) return;
+            
+            isMenuOpen = false;
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.style.overflow = '';
+            
+            // Update ARIA attributes
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            menuOverlay.setAttribute('aria-hidden', 'true');
+            
+            // Return focus to menu button
+            mobileMenuBtn.focus();
+            
+            triggerHapticFeedback();
+        }
+        
+        // Touch/swipe gesture handling
+        function handleTouchStart(e) {
+            if (!isMenuOpen) return;
+            
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+        
+        function handleTouchMove(e) {
+            if (!isMenuOpen) return;
+            
+            touchCurrentX = e.touches[0].clientX;
+            touchCurrentY = e.touches[0].clientY;
+            
+            const deltaX = touchCurrentX - touchStartX;
+            const deltaY = Math.abs(touchCurrentY - touchStartY);
+            
+            // Only handle horizontal swipes (not vertical scrolling)
+            if (deltaY < 50 && deltaX > 50) {
+                // Swiping right to close menu
+                const opacity = Math.max(0, 1 - (deltaX / 200));
+                const translateX = Math.min(deltaX, 200);
+                
+                mobileMenu.style.transform = `translateX(${translateX}px)`;
+                menuOverlay.style.opacity = opacity;
+                
+                e.preventDefault();
+            }
+        }
+        
+        function handleTouchEnd(e) {
+            if (!isMenuOpen) return;
+            
+            const deltaX = touchCurrentX - touchStartX;
+            const deltaY = Math.abs(touchCurrentY - touchStartY);
+            
+            // Reset styles
+            mobileMenu.style.transform = '';
+            menuOverlay.style.opacity = '';
+            
+            // Close menu if swiped right significantly
+            if (deltaY < 50 && deltaX > 100) {
+                closeMenu();
+            }
+        }
+        
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', openMenu);
         closeMenuBtn.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', closeMenu);
         
+        // Touch events for swipe gestures
+        mobileMenu.addEventListener('touchstart', handleTouchStart, { passive: false });
+        mobileMenu.addEventListener('touchmove', handleTouchMove, { passive: false });
+        mobileMenu.addEventListener('touchend', handleTouchEnd, { passive: false });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMenu();
+            }
+        });
+        
+        // Close menu when clicking on nav links
         document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
